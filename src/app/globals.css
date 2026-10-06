@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f3f5f8;
+  --color-ink: #05070b;
+  --color-cobalt: #2457e6;
+  --color-ice: #d9e7ff;
+  --color-navy: #0a1b4d;
+  --color-mist: #e6e9ef;
+  --color-muted: #566070;
+  --font-sans: var(--font-geist), Inter, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 3px;
+}
+
+.on-dark :focus-visible {
+  outline-color: #fff;
+}
+
+@layer components {
+  .page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1600px;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .page {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .guides {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+  }
+  .guides .page {
+    height: 100%;
+  }
+  .guides .page > div {
+    height: 100%;
+    border-right: 1px solid rgb(5 7 11 / 0.07);
+    background-image: linear-gradient(to right, rgb(5 7 11 / 0.07) 1px, transparent 1px);
+    background-size: 25% 100%;
+  }
+  @media (min-width: 768px) {
+    .guides .page > div {
+      background-size: 12.5% 100%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .guides .page > div {
+      background-size: 8.3333% 100%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
